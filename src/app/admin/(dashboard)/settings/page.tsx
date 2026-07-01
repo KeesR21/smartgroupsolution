@@ -1,7 +1,8 @@
 import { getServerSession } from "next-auth";
-import { KeyRound, Mail, ShieldCheck, Database } from "lucide-react";
+import { Mail, ShieldCheck, Database } from "lucide-react";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { GlassPanel } from "@/components/admin/GlassPanel";
+import { ChangePasswordForm } from "@/components/admin/ChangePasswordForm";
 import { authOptions } from "@/lib/auth-options";
 
 export const dynamic = "force-dynamic";
@@ -39,21 +40,11 @@ export default async function AdminSettingsPage() {
           </div>
         </GlassPanel>
 
-        <GlassPanel title="Credentials" description="How to change your admin login.">
-          <div className="flex items-start gap-3 rounded-xl border border-white/10 bg-white/5 p-4">
-            <KeyRound className="mt-0.5 h-5 w-5 shrink-0 text-neon-cyan" />
-            <div className="space-y-2 text-sm text-[var(--text-muted)]">
-              <p>
-                Login credentials are managed through environment variables — no database required.
-              </p>
-              <p>
-                Set <code className="text-neon-cyan">ADMIN_EMAIL</code> and{" "}
-                <code className="text-neon-cyan">ADMIN_PASSWORD</code> (or{" "}
-                <code className="text-neon-cyan">ADMIN_PASSWORD_HASH</code> for a bcrypt hash) in
-                your <code className="text-neon-cyan">.env</code> file, then restart the server.
-              </p>
-            </div>
-          </div>
+        <GlassPanel
+          title="Change password"
+          description="Update your admin password. The new password is stored securely (bcrypt) and used on your next sign-in."
+        >
+          <ChangePasswordForm />
         </GlassPanel>
 
         <GlassPanel
