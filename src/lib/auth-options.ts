@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { writeAuditLog } from "@/lib/audit";
 import { logServer } from "@/lib/logger";
 import { ADMIN_EMAIL, ADMIN_NAME, verifyAdminPassword } from "@/lib/admin-credentials";
+import { getAuthSecret } from "@/lib/auth-secret";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -35,7 +36,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: getAuthSecret(),
   events: {
     async signIn({ user }) {
       await writeAuditLog({
