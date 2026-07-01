@@ -1,0 +1,286 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-primary: #050a18;
+    --bg-secondary: #0b1229;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --accent-cyan: #22d3ee;
+    --accent-blue: #3b82f6;
+    --accent-purple: #a855f7;
+    --glass-bg: rgba(15, 23, 42, 0.55);
+    --glass-border: rgba(148, 163, 184, 0.12);
+    --link-hover: #22d3ee;
+    --nav-active: #22d3ee;
+  }
+
+  .light {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-muted: #64748b;
+    --glass-bg: rgba(255, 255, 255, 0.78);
+    --glass-border: rgba(59, 130, 246, 0.2);
+    --link-hover: #1d4ed8;
+    --nav-active: #1d4ed8;
+  }
+
+  /* Admin panel always uses dark theme tokens (even if html has .light) */
+  [data-admin-root] {
+    color-scheme: dark;
+    --bg-primary: #050a18;
+    --bg-secondary: #0b1229;
+    --text-primary: #f8fafc;
+    --text-muted: #94a3b8;
+    --glass-bg: rgba(15, 23, 42, 0.55);
+    --glass-border: rgba(148, 163, 184, 0.12);
+    --link-hover: #22d3ee;
+    --nav-active: #22d3ee;
+  }
+
+  .light [data-admin-root] h1,
+  .light [data-admin-root] h2,
+  .light [data-admin-root] h3,
+  .light [data-admin-root] h4,
+  .light [data-admin-root] h5,
+  .light [data-admin-root] h6 {
+    @apply from-neon-cyan via-neon-blue to-neon-purple;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-display), var(--font-sans), system-ui, sans-serif;
+    font-feature-settings: "kern" 1, "liga" 1;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    padding-bottom: 0.12em;
+    overflow: visible;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 130%;
+    background-position: center 48%;
+    @apply bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple bg-clip-text text-transparent;
+  }
+
+  .light h1,
+  .light h2,
+  .light h3,
+  .light h4,
+  .light h5,
+  .light h6 {
+    @apply from-blue-700 via-blue-600 to-blue-500;
+  }
+
+  ::selection {
+    @apply bg-neon-blue/40 text-white;
+  }
+
+  .light ::selection {
+    @apply bg-blue-200 text-blue-950;
+  }
+}
+
+@layer components {
+  .glass {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    @apply backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply glass shadow-lg shadow-neon-blue/5;
+  }
+
+  .light .glass-strong {
+    @apply shadow-blue-100/80;
+  }
+
+  .gradient-text {
+    display: inline-block;
+    line-height: 1.25;
+    padding-bottom: 0.12em;
+    overflow: visible;
+    -webkit-text-fill-color: transparent;
+    background-size: 100% 130%;
+    background-position: center 48%;
+    @apply bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple bg-clip-text text-transparent;
+  }
+
+  .light .gradient-text {
+    @apply from-blue-700 via-blue-600 to-blue-500;
+  }
+
+  /* Accent text — readable on light backgrounds */
+  .light .text-neon-cyan {
+    color: #2563eb;
+  }
+
+  .light .text-neon-purple {
+    color: #4f46e5;
+  }
+
+  .light .accent-label {
+    color: #2563eb;
+  }
+
+  /* Buttons */
+  .light .btn-secondary-theme {
+    @apply border-blue-400/60 bg-white text-slate-900 shadow-sm;
+  }
+
+  .light .btn-secondary-theme:hover {
+    @apply border-blue-600 bg-blue-50 text-blue-950;
+  }
+
+  .light .btn-ghost-theme {
+    @apply text-slate-600;
+  }
+
+  .light .btn-ghost-theme:hover {
+    @apply text-slate-900;
+  }
+
+  /* Form fields */
+  .light .form-field-theme {
+    @apply border-slate-300 bg-white text-slate-900;
+  }
+
+  .light .form-field-theme:focus {
+    @apply border-blue-500 ring-blue-400/30;
+  }
+
+  /* Nav links */
+  .nav-link {
+    @apply text-[var(--text-muted)] transition-colors;
+  }
+
+  .nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .nav-link-active {
+    color: var(--nav-active);
+  }
+
+  .light .nav-link:hover {
+    color: #0f172a;
+  }
+
+  .light .nav-link-active {
+    color: #1d4ed8;
+  }
+
+  .light .nav-underline-active {
+    --tw-gradient-from: transparent;
+    --tw-gradient-via: #3b82f6;
+    --tw-gradient-to: transparent;
+  }
+
+  /* Footer & section links */
+  .light .link-hover-theme:hover {
+    color: #1d4ed8;
+  }
+
+  .light .social-link:hover {
+    @apply bg-blue-50 text-blue-700;
+  }
+
+  .neon-glow {
+    box-shadow:
+      0 0 20px rgba(34, 211, 238, 0.25),
+      0 0 40px rgba(59, 130, 246, 0.15);
+  }
+
+  .neon-glow-hover {
+    @apply transition-shadow duration-300;
+  }
+
+  .neon-glow-hover:hover {
+    box-shadow:
+      0 0 25px rgba(34, 211, 238, 0.4),
+      0 0 50px rgba(168, 85, 247, 0.2);
+  }
+
+  .section-padding {
+    @apply px-4 py-20 sm:px-6 lg:px-8 lg:py-28;
+  }
+
+  .hero-title-triplet {
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    padding-bottom: 0.14em;
+    overflow: visible;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-bold leading-[1.2] sm:text-4xl lg:text-5xl;
+    letter-spacing: -0.02em;
+    padding-bottom: 0.1em;
+    overflow: visible;
+  }
+
+  .section-subtitle {
+    @apply mt-4 max-w-2xl text-lg text-[var(--text-muted)];
+  }
+
+  .site-footer {
+    @apply border-t backdrop-blur-xl;
+    border-color: var(--glass-border);
+    background: color-mix(in srgb, var(--bg-secondary) 85%, transparent);
+  }
+
+  .animate-brand-ring-slow {
+    animation: brand-ring-spin 2.4s linear infinite;
+  }
+
+  .animate-brand-ring-reverse {
+    animation: brand-ring-spin-reverse 1.6s linear infinite;
+  }
+
+  @keyframes brand-ring-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes brand-ring-spin-reverse {
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-brand-ring-slow,
+  .animate-brand-ring-reverse {
+    animation: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

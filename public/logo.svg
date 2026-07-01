@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="none" role="img" aria-label="Smart Group Solution">
+  <defs>
+    <linearGradient id="sts-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+  </defs>
+  <circle cx="70" cy="70" r="66" fill="#050A18"/>
+  <circle cx="70" cy="70" r="64" stroke="#22D3EE" stroke-opacity="0.35" stroke-width="2"/>
+  <circle cx="70" cy="70" r="56" stroke="url(#sts-gradient)" stroke-width="3" stroke-linecap="round" stroke-dasharray="88 260" transform="rotate(-90 70 70)"/>
+  <text x="70" y="78" text-anchor="middle" font-family="system-ui,Segoe UI,sans-serif" font-size="17" font-weight="700" fill="#F8FAFC" letter-spacing="-0.5">Smart<tspan fill="url(#sts-gradient)"> G</tspan></text>
+</svg>
